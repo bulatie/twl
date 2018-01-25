@@ -69,51 +69,5 @@ require = (function (modules, cache, entry) {
   // Override the current require with this new one
   return newRequire;
 })({6:[function(require,module,exports) {
-const rightcircle = document.querySelector('.rightcircle')
-const leftcircle = document.querySelector('.leftcircle')
-const show = document.querySelector('.inner')
-const initSecond = 10
-let isEnd = false
-
-function end() {
-  isEnd = true
-  rightcircle.style.cssText = 'animation-play-state:paused;'
-  leftcircle.style.cssText = 'animation-play-state:paused;'
-}
-
-function run() {
-  isEnd = false
-  const startTime = new Date().getTime()
-  rightcircle.style.webkitAnimation = 'none'
-  leftcircle.style.webkitAnimation = 'none'
-  setTimeout(function() {
-    rightcircle.style.webkitAnimation = ''
-    leftcircle.style.webkitAnimation = ''
-    rightcircle.style.cssText = 'animation-play-state:running;'
-    leftcircle.style.cssText = 'animation-play-state:running;'
-  }, 10)
-  const i = setInterval(() => {
-    const currentTime = new Date().getTime()
-    const leftTime = initSecond - Math.floor((currentTime - startTime) / 1000)
-    if (leftTime >= 0 && !isEnd) {
-      show.innerHTML = leftTime
-    } else {
-      clearInterval(i)
-    }
-  }, 10)
-}
-
-document.querySelector('#answer').addEventListener('click', function(e) {
-  document.querySelector('.score-bar.right > .score').innerHTML = 200
-  document.querySelector(
-    '.score-bar.right > .score-process-bar'
-  ).style.cssText =
-    'height: 1rem;'
-  end()
-})
-
-setTimeout(() => {
-  run()
-}, 1000)
-
+const e=document.querySelector("#countdown svg circle"),t=document.querySelector(".inner"),n=10;let o=!1;function r(){o=!0,e.style.animationPlayState="paused",e.style.webkitAnimationPlayState="paused"}function c(){o=!1;const r=(new Date).getTime();e.style.webkitAnimation="none",setTimeout(function(){e.style.webkitAnimation="",e.style.animationPlayState="running"},10);const c=setInterval(()=>{const e=(new Date).getTime(),i=n-Math.floor((e-r)/1e3);i>=0&&!o?t.innerHTML=i:clearInterval(c)},10)}document.querySelector("#answer").addEventListener("click",function(e){document.querySelector(".score-bar.right > .score").innerHTML=200,document.querySelector(".score-bar.right > .score-process-bar").style.cssText="height: 1rem;",r()}),c();
 },{}]},{},[6])

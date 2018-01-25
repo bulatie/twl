@@ -69,35 +69,5 @@ require = (function (modules, cache, entry) {
   // Override the current require with this new one
   return newRequire;
 })({3:[function(require,module,exports) {
-;(function(script) {
-  var document = window.document,
-    docEl = document.documentElement,
-    psd = script ? ~~script.dataset.psd : 750,
-    dpr = 1,
-    scale = 1 / dpr,
-    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
-  var metaEl = document.createElement('meta')
-  metaEl.name = 'viewport'
-  metaEl.content =
-    'width=device-width, user-scalable=no, initial-scale=' +
-    scale +
-    ', maximum-scale=' +
-    scale +
-    ', minimum-scale=' +
-    scale
-  docEl.firstElementChild.appendChild(metaEl)
-  var recalc = function() {
-    var width = docEl.clientWidth
-    if (width / dpr > psd) {
-      width = psd * dpr
-    }
-    docEl.dataset.width = width
-    docEl.dataset.persent = 100 * (width / psd)
-    docEl.style.fontSize = 100 * (width / psd) + 'px'
-  }
-  recalc()
-  if (!document.addEventListener) return
-  window.addEventListener(resizeEvt, recalc, false)
-})(document.querySelector('script[data-psd]'))
-
+!function(e){var t=window.document,n=t.documentElement,i=e?~~e.dataset.psd:750,a="orientationchange"in window?"orientationchange":"resize",d=t.createElement("meta");d.name="viewport",d.content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1",n.firstElementChild.appendChild(d);var c=function(){var e=n.clientWidth;e/1>i&&(e=1*i),n.dataset.width=e,n.dataset.persent=e/i*100,n.style.fontSize=e/i*100+"px"};c(),t.addEventListener&&window.addEventListener(a,c,!1)}(document.querySelector("script[data-psd]"));
 },{}]},{},[3])
