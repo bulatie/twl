@@ -68,6 +68,6 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({3:[function(require,module,exports) {
+})({5:[function(require,module,exports) {
 !function(e){var t=window.document,n=t.documentElement,i=e?~~e.dataset.psd:750,a="orientationchange"in window?"orientationchange":"resize",d=t.createElement("meta");d.name="viewport",d.content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1",n.firstElementChild.appendChild(d);var c=function(){var e=n.clientWidth;e/1>i&&(e=1*i),n.dataset.width=e,n.dataset.persent=e/i*100,n.style.fontSize=e/i*100+"px"};c(),t.addEventListener&&window.addEventListener(a,c,!1)}(document.querySelector("script[data-psd]"));
-},{}]},{},[3])
+},{}]},{},[5])
