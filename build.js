@@ -45,7 +45,7 @@ for (let file of files) {
         const matched = piece.match(pageReg)
         return matched[1] === 'index' ? '/' : '/' + matched[1]
       })
-      const fileDir = path.join(__dirname, 'deploy', hashPageMap[fileName] === 'index' ? '' : hashPageMap[fileName])
+      const fileDir = path.join(__dirname, 'docs', hashPageMap[fileName] === 'index' ? '' : hashPageMap[fileName])
       if (!fs.existsSync(fileDir)) {
         fs.mkdirSync(fileDir)
       }
