@@ -2,6 +2,7 @@
 node_modules/
 dist/
 static/
+!docs/static
 deploy/
 npm-debug.log*
 yarn-debug.log*
