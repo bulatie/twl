@@ -8,11 +8,15 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development BUILD_MODE=dev parcel src/enter.html --out-dir static",
-    "build": "cross-env NODE_ENV=production BUILD_MODE=dev parcel build src/enter.html --no-minify --out-dir static --public-url /twl/docs/static && node build.js"
+    "dev": "cross-env NODE_ENV=production BUILD_MODE=dev parcel src/enter.html --out-dir static",
+    "build":
+      "cross-env rm -r .cache && cross-env rm -r static && cross-env NODE_ENV=production BUILD_MODE=dev parcel build src/enter.html --no-minify --out-dir static --public-url /twl/docs/static && node build.js"
   },
   "dependencies": {},
   "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
     "chalk": "^2.3.0",
     "cross-env": "^5.1.3",
     "eslint": "^4.15.0",
