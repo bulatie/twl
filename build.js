@@ -12,7 +12,7 @@ console.log(chalk.cyan(`  building for deploy:...\n`))
 const hashPageMap = {}
 const pageHashMap = {}
 const enterHtml = fs.readFileSync(path.join(__dirname, 'static', 'enter.html'), 'utf-8')
-const re = /\<a href=\"\/twl\/docs\/static\/([\w\d]*).html\"\>([\w-\d]*)\<\/a\>/
+const re = /\<a href=\"\/twl\/static\/([\w\d]*).html\"\>([\w-\d]*)\<\/a\>/
 const matches = enterHtml.match(new RegExp(re.source, 'g'))
 if (matches) {
   matches.forEach(item => {

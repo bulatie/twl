@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=production BUILD_MODE=dev parcel src/enter.html --out-dir static",
     "build":
-      "cross-env rm -r .cache && cross-env rm -r static && cross-env NODE_ENV=production BUILD_MODE=dev parcel build src/enter.html --no-minify --out-dir static --public-url /twl/docs/static && node build.js"
+      "cross-env rm -r .cache && cross-env rm -r static && cross-env NODE_ENV=production BUILD_MODE=dev parcel build src/enter.html --no-minify --out-dir static --public-url /twl/static && node build.js"
   },
   "dependencies": {},
   "devDependencies": {
