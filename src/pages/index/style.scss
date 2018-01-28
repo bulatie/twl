@@ -1,0 +1,323 @@
+$background-color: #4352a5;
+
+$topic-font-color: #fff;
+$topic-font-size: 0.47rem;
+$topic-margin-top: 2.24rem;
+$topic-padding: 1.34rem;
+
+$options-font-color: #4e5393;
+$options-button-background-color: #ffffff;
+$options-button-border-color: #303666;
+$options-margin: 0.3rem;
+$options-width: 6.34rem;
+$options-height: 1.62rem;
+$options-font-size: 0.51rem;
+$options-radius: 0.25rem;
+
+$score-font-color: #63bafd;
+$score-font-size: 0.54rem;
+$score-offset-top: 0.79rem;
+$score-bar-background-color: #1c3673;
+$score-bar-border-color: #4b6abd;
+$score-bar-process-background-color: #f4584b;
+$score-bar-height: 7.79rem;
+$score-bar-width: 0.48rem;
+$score-bar-border-width: 0.07rem;
+$score-bar-margin: 0.92rem;
+$score-bar-radius: 0.2rem;
+
+$timer-font-color: #ffffff;
+$timer-circle-background-color: #fff;
+$timer-process-color: #f05a4c;
+$timer-process-box-length: 54px;
+$timer-process-box-padding: 2px;
+$timer-process-width: 6px;
+$timer-font-size: 26px;
+
+$character-oppenent-backgound-color: #5082e5;
+$character-self-background-color: #b93157;
+$character-logo-background-color: #ffffff;
+$character-box-height: 2.07rem;
+$character-box-width: 2.52rem;
+$character-box-border-radium: 50%;
+$character-logo-padding: 0.15rem;
+$character-logo-border-width: 0.12rem;
+$character-logo-margin: 0.66rem;
+$character-logo-length: 1.7rem;
+$character-logo-inner-length: 1.46rem;
+
+$head-margin-top: 0.23rem;
+$options-wrapper-height: 7.97rem;
+
+body {
+  background-color: $background-color;
+  overflow: hidden;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  background-image: url('./img/bg_battle.png');
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+  background-size: contain;
+}
+
+.head {
+  position: relative;
+  margin-top: $head-margin-top;
+  height: 2.14rem;
+  line-height: 2.14rem;
+  text-align: center;
+}
+
+.head .decoration {
+  position: absolute;
+  width: 6rem;
+  bottom: -12px;
+  left: 50%;
+  margin-left: -3.2rem;
+}
+
+.character {
+  position: absolute;
+  top: 0;
+  height: $character-box-height;
+  width: $character-box-width;
+
+  .logo {
+    position: absolute;
+    top: $character-logo-padding;
+    width: $character-logo-length;
+    height: $character-logo-length;
+    border-radius: $character-box-border-radium;
+    border: $character-logo-border-width solid $character-logo-background-color;
+    box-sizing: border-box;
+  }
+
+  &.left {
+    left: 0;
+    background-color: $character-oppenent-backgound-color;
+    border-bottom-right-radius: $character-box-border-radium;
+    border-top-right-radius: 44%;
+    .logo {
+      right: $character-logo-padding;
+      background-image: url('./img/robot.png');
+      background-size: cover;
+      background-position: 50%;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &.right {
+    right: 0;
+    background-color: $character-self-background-color;
+    border-bottom-left-radius: $character-box-border-radium;
+    border-top-left-radius: 44%;
+    .logo {
+      left: $character-logo-padding;
+      background-image: url('./img/man.png');
+      background-size: cover;
+      background-position: 50%;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.timer-process {
+  position: relative;
+  display: inline-block;
+  width: $timer-process-box-length;
+  height: $timer-process-box-length;
+  border-radius: 50%;
+  background-color: $timer-circle-background-color;
+  vertical-align: bottom;
+  .inner {
+    width: $timer-process-box-length - $timer-process-width * 2 - $timer-process-box-padding * 4;
+    height: $timer-process-box-length - $timer-process-width * 2 - $timer-process-box-padding * 4;
+    line-height: $timer-process-box-length - $timer-process-width * 2 - $timer-process-box-padding * 4;
+    border-radius: 50%;
+    position: absolute;
+    top: $timer-process-width + $timer-process-box-padding * 2;
+    left: $timer-process-width + $timer-process-box-padding * 2;
+    color: $timer-font-color;
+    text-align: center;
+    font-size: $timer-font-size;
+    background-color: $background-color;
+  }
+}
+
+#countdown {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+
+  svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $timer-process-box-length;
+    height: $timer-process-box-length;
+    transform: rotateY(-180deg) rotateZ(-90deg);
+  }
+
+  svg circle {
+    stroke-dasharray: 144px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: butt;
+    stroke-width: $timer-process-width;
+    stroke: $timer-process-color;
+    fill: none;
+    animation: countdown 10s linear 1 forwards;
+  }
+}
+
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0px;
+  }
+  to {
+    stroke-dashoffset: 144px;
+  }
+}
+
+.topic {
+  margin-top: $topic-margin-top;
+  margin-bottom: $topic-margin-top;
+  min-height: $topic-font-size * 1.5 * 2;
+  padding: 0 $topic-padding;
+  line-height: 1.5;
+  color: $topic-font-color;
+  font-size: $topic-font-size;
+}
+
+.options-wrapper {
+  position: relative;
+  width: 100%;
+  height: $options-wrapper-height;
+
+  > p.option {
+    position: relative;
+    width: $options-width;
+    margin: 0 auto;
+    height: $options-height;
+    line-height: $options-height;
+    background-color: $options-button-background-color;
+    color: $options-font-color;
+    font-size: $options-font-size;
+    text-align: center;
+    margin-bottom: $options-margin;
+    border-radius: $options-radius;
+    &::before {
+      content: '';
+      visibility: hidden;
+      position: absolute;
+      width: 0.5rem;
+      height: 0.5rem;
+      top: 50%;
+      left: 10px;
+      margin-top: -0.25rem;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50%;
+    }
+    &::after {
+      content: '';
+      visibility: hidden;
+      position: absolute;
+      width: 0.5rem;
+      height: 0.5rem;
+      top: 50%;
+      right: 10px;
+      margin-top: -0.25rem;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50%;
+    }
+    &.check {
+      background-color: #a2d237;
+      &.by-man::after {
+        visibility: visible;
+        background-image: url('./img/icon_btn_answer_right.png');
+      }
+      &.by-robot::before {
+        visibility: visible;
+        background-image: url('./img/icon_btn_answer_right.png');
+      }
+    }
+    &.fail {
+      background-color: #fa6e4a;
+      &.by-man::after {
+        visibility: visible;
+        background-image: url('./img/icon_btn_answer_wrong.png');
+      }
+      &.by-robot::before {
+        visibility: visible;
+        background-image: url('./img/icon_btn_answer_wrong.png');
+      }
+    }
+  }
+}
+
+.score-bar {
+  height: $score-bar-height;
+  width: $score-bar-width;
+  border: $score-bar-border-width solid $score-bar-border-color;
+  box-sizing: border-box;
+  border-radius: $score-bar-radius;
+  background-color: $score-bar-background-color;
+
+  &.left {
+    position: absolute;
+    left: $score-bar-margin;
+    bottom: 0;
+  }
+
+  &.right {
+    position: absolute;
+    right: $score-bar-margin;
+    bottom: 0;
+  }
+
+  > .score {
+    position: absolute;
+    width: $score-font-size*4;
+    font-size: $score-font-size;
+    color: $score-font-color;
+    top: -$score-offset-top;
+    left: 50%;
+    margin-left: -$score-font-size*2;
+    text-align: center;
+  }
+}
+
+.score-process-bar {
+  width: 100%;
+  height: 0;
+  position: absolute;
+  bottom: 0;
+  border-radius: $score-bar-radius;
+  background-color: $score-bar-process-background-color;
+  transition: all 0.5s ease-out;
+}
+
+.wrong-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(226, 56, 56, 0.5);
+}
